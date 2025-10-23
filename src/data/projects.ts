@@ -1,0 +1,96 @@
+import { Project } from '@/types/project';
+
+export const projects: Project[] = [
+  // 1. الأقوى - Solemate E-commerce Platform (معقد جداً مع Stripe API)
+  {
+    id: 'solemate-ecommerce',
+    title: 'Solemate E-commerce Platform',
+    description: 'Full-stack e-commerce platform with Laravel backend and Vue.js frontend',
+    longDescription: 'A comprehensive e-commerce solution built with Laravel 9 and Vue.js 3, featuring product management, shopping cart, Stripe payment integration, admin dashboard, Docker deployment, and advanced analytics.',
+    image: '/images/projects/ecommerce.png',
+    technologies: ['PHP', 'Laravel', 'Vue.js', 'MySQL', 'Stripe API', 'Docker', 'Redis'],
+    liveUrl: 'https://solemate-demo.vercel.app',
+    githubUrl: 'https://github.com/mohamedtarek64/solemate-ecommerce',
+    featured: true,
+    category: 'web',
+    startDate: '2024-05-01',
+    endDate: '2024-11-01',
+  },
+  // 2. HMS - نظام إدارة مستشفى (معقد جداً)
+  {
+    id: 'hms-hospital-management',
+    title: 'Hospital Management System (HMS)',
+    description: 'Comprehensive hospital management system for patient records, appointments, and billing',
+    longDescription: 'A full-featured hospital management system built with Laravel and Vue.js, handling patient registration, appointment scheduling, medical records, billing, and staff management with role-based access control.',
+    image: '/images/projects/login_hms.png',
+    technologies: ['PHP', 'Laravel', 'Vue.js', 'MySQL', 'Bootstrap', 'Chart.js'],
+    liveUrl: 'https://hms-demo.vercel.app',
+    githubUrl: 'https://github.com/mohamedtarek64/hospital-management-system',
+    featured: true,
+    category: 'web',
+    startDate: '2024-02-01',
+    endDate: '2024-09-01',
+  },
+  // 3. Real Estate - مع OpenStreetMap API
+  {
+    id: 'real-estate-management',
+    title: 'Real Estate Management System',
+    description: 'Real estate platform with 200+ property listings and interactive map integration',
+    longDescription: 'A comprehensive real estate management platform with OpenStreetMap integration, supporting 200+ property listings and advanced search features.',
+    image: '/images/projects/Real Estate.PNG',
+    technologies: ['PHP', 'Laravel', 'MySQL', 'JavaScript', 'Bootstrap', 'OpenStreetMap API'],
+    liveUrl: 'https://real-estate-demo.vercel.app',
+    githubUrl: 'https://github.com/mohamedtarek64/real-estate-management',
+    featured: true,
+    category: 'web',
+    startDate: '2024-04-01',
+    endDate: '2024-08-01',
+  },
+  // 4. Arabic POS System - النسخة الأساسية
+  {
+    id: 'pos-system',
+    title: 'Arabic POS System',
+    description: 'Complete Arabic POS system for managing sales, customers, inventory, and installments',
+    longDescription: 'A comprehensive point-of-sale system built with Laravel and Vue.js, featuring real-time inventory tracking, customer management, and detailed reporting capabilities.',
+    image: '/images/projects/POS.PNG',
+    technologies: ['PHP', 'Laravel', 'Vue.js', 'MySQL', 'Bootstrap'],
+    liveUrl: 'https://pos-demo.vercel.app',
+    githubUrl: 'https://github.com/mohamedtarek64/arabic-pos-system',
+    featured: true,
+    category: 'desktop',
+    startDate: '2024-01-01',
+    endDate: '2024-06-01',
+  },
+  // 5. POS System 2.0 - نسخة محسنة
+  {
+    id: 'pos-system-2',
+    title: 'POS System 2.0',
+    description: 'Enhanced version of the POS system with advanced reporting and analytics features',
+    longDescription: 'An advanced POS system with analytics dashboard, 60% performance improvement over v1.0, and comprehensive vendor management capabilities.',
+    image: '/images/projects/POS-SYSTEM-2.png',
+    technologies: ['PHP', 'Laravel', 'MySQL', 'JavaScript', 'Next.js'],
+    liveUrl: 'https://pos-v2-demo.vercel.app',
+    githubUrl: 'https://github.com/mohamedtarek64/pos-system-2',
+    featured: true,
+    category: 'desktop',
+    startDate: '2024-07-01',
+    endDate: '2024-12-01',
+  },
+  // 6. الأضعف - Audio Signal Processing (أبسط)
+  {
+    id: 'audio-signal-processing',
+    title: 'Audio Signal Processing',
+    description: 'Advanced toolkit for analyzing and processing audio signals',
+    longDescription: 'A Python-based audio processing toolkit using NumPy and SciPy for signal analysis, noise reduction, and audio enhancement with 95% accuracy.',
+    image: '/images/projects/Audio-Signal.PNG',
+    technologies: ['Python', 'NumPy', 'SciPy', 'Matplotlib'],
+    liveUrl: 'https://audio-demo.vercel.app',
+    githubUrl: 'https://github.com/mohamedtarek64/audio-signal-processing',
+    featured: true,
+    category: 'other',
+    startDate: '2024-03-01',
+    endDate: '2024-05-01',
+  },
+];
+
+export default projects;

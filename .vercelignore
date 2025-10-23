@@ -1,0 +1,12 @@
+# Ignore old project files
+README.md
+PROJECT_PROMPT.md
+CV_IMPROVEMENTS.md
+mohamed-elkenany-cv.tex
+css/
+js/
+*.html
+*.js
+*.php
+portfolio-nextjs/
+force-rebuild.txt
