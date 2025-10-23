@@ -37,7 +37,6 @@ next-env.d.ts
 # Old project files (keep locally but don't upload to GitHub)
 css/
 js/
-images/
 cv.html
 index.html
 CV_IMPROVEMENTS.md
@@ -46,3 +45,5 @@ PROJECT_PROMPT.md
 force-rebuild.txt
 package-main.json
 portfolio-nextjs/
+
+# Note: images/ removed from ignore list to allow Next.js images to be uploaded

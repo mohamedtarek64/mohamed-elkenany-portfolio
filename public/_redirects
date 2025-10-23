@@ -1,0 +1,5 @@
+# Netlify redirects for images
+/images/* /images/:splat 200
+
+# Fallback for SPA
+/* /index.html 200
