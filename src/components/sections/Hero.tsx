@@ -234,7 +234,7 @@ const Hero: React.FC = () => {
             className="w-full sm:w-auto"
           >
             <Button
-              onClick={() => window.open('https://drive.google.com/file/d/1gnnTJNSV21J1uMt-UCS149etX9qntcf_/view', '_blank')}
+              onClick={() => window.open('https://drive.google.com/file/d/1Fnwo5QjWliJBbbXI0uHH3m7KOB0vAg8B/view?usp=sharing', '_blank')}
               className="w-full px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-primary via-secondary to-accent text-white dark:text-white rounded-2xl font-semibold text-base md:text-lg shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-300"
             >
               <Icon icon={faDownload} className="w-4 h-4 md:w-5 md:h-5 mr-2" />

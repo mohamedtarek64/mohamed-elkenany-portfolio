@@ -47,7 +47,7 @@ const Header: React.FC = () => {
     { href: '#experience', label: 'Experience' },
     { href: '#projects', label: 'Projects' },
     { href: '#contact', label: 'Contact' },
-    { href: 'https://drive.google.com/uc?export=download&id=1gnnTJNSV21J1uMt-UCS149etX9qntcf_', label: 'CV', external: true },
+    { href: 'https://drive.google.com/file/d/1Fnwo5QjWliJBbbXI0uHH3m7KOB0vAg8B/view?usp=sharing', label: 'CV', external: true },
   ];
 
   return (
