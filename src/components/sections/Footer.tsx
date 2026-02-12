@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { socialLinks } from '@/data/social-links';
 import { personalInfo } from '@/data/personal-info';
 import Icon from '@/components/ui/Icon';
-import { faHeart, faArrowUp, faEnvelope, faPhone, faMapMarkerAlt, faCode, faRocket, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -24,176 +25,90 @@ const Footer: React.FC = () => {
     { href: '#contact', label: 'Contact' },
   ];
 
-
   return (
-    <footer className="bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-slate-900 text-gray-900 dark:text-white relative overflow-hidden border-t border-gray-200 dark:border-gray-700">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-tr from-accent/5 to-primary/5 dark:from-accent/10 dark:to-primary/10 rounded-full blur-3xl"></div>
+    <footer className="relative border-t border-dark-100 dark:border-dark-900 pt-24 pb-12 transition-colors duration-500 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary-500/5 blur-[120px] rounded-full" />
       </div>
 
-      <div className="container mx-auto px-4 py-12 relative z-10">
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Enhanced Brand Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2"
-          >
-            <motion.div
-              className="mb-6"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <h3 className="text-2xl sm:text-3xl font-bold gradient-text mb-4">
-                {personalInfo.name}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-md leading-relaxed">
-                {personalInfo.description}
-              </p>
-            </motion.div>
-            
-            {/* Enhanced Social Links */}
-            <div className="flex space-x-4">
-              {socialLinks.map((link, index) => (
-                <motion.a
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-4 gap-16 mb-24">
+          {/* Brand */}
+          <div className="lg:col-span-2 space-y-8">
+            <Link href="/" className="text-3xl font-display font-black tracking-tighter dark:text-white">
+              ME<span className="text-primary-600">.</span>
+            </Link>
+            <p className="text-lg text-dark-500 dark:text-dark-400 max-w-sm leading-relaxed">
+              Crafting premium digital experiences through purposeful design and technical excellence.
+            </p>
+            <div className="flex gap-4">
+              {socialLinks.map((link) => (
+                <a
                   key={link.name}
                   href={link.url}
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="group"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  whileHover={{ scale: 1.2, y: -5 }}
-                  whileTap={{ scale: 0.9 }}
+                  className="w-12 h-12 rounded-2xl glass-card flex items-center justify-center text-dark-400 hover:bg-primary-600 hover:text-white transition-all duration-500"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 hover:from-primary hover:to-secondary flex items-center justify-center transition-all duration-300 shadow-lg group-hover:shadow-xl">
-                    <Icon icon={link.icon} className="w-6 h-6 text-primary dark:text-gray-300 group-hover:text-white transition-colors duration-300" />
-                  </div>
-                </motion.a>
+                  <Icon icon={link.icon} className="w-5 h-5" />
+                </a>
               ))}
             </div>
-          </motion.div>
-
-          {/* Enhanced Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <h4 className="text-xl font-bold gradient-text mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              {footerLinks.map((link, index) => (
-                <motion.li
-                  key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                >
-                  <Link
-                    href={link.href}
-                    className="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors duration-300 flex items-center group"
-                  >
-                    <Icon icon={faArrowUp} className="w-3 h-3 mr-2 rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-                    {link.label}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Enhanced Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <h4 className="text-xl font-bold gradient-text mb-6">Contact Info</h4>
-            <div className="space-y-4">
-              <motion.a
-                href={`mailto:${personalInfo.email}`}
-                className="flex items-center text-gray-300 hover:text-primary transition-colors duration-300 group"
-                whileHover={{ scale: 1.02, x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center mr-3 group-hover:shadow-lg transition-all duration-300">
-                  <Icon icon={faEnvelope} className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-sm">{personalInfo.email}</span>
-              </motion.a>
-
-              <motion.a
-                href={`tel:${personalInfo.phone}`}
-                className="flex items-center text-gray-300 hover:text-primary transition-colors duration-300 group"
-                whileHover={{ scale: 1.02, x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center mr-3 group-hover:shadow-lg transition-all duration-300">
-                  <Icon icon={faPhone} className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-sm">{personalInfo.phone}</span>
-              </motion.a>
-
-              <motion.div
-                className="flex items-center text-gray-300 group"
-                whileHover={{ scale: 1.02, x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center mr-3 group-hover:shadow-lg transition-all duration-300">
-                  <Icon icon={faMapMarkerAlt} className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-sm">{personalInfo.location}</span>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Enhanced Bottom Section */}
-        <motion.div
-          className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-        >
-          <div className="flex items-center text-gray-300 mb-4 md:mb-0">
-            <span>© {currentYear} {personalInfo.name}. Made with</span>
-            <motion.div
-              className="mx-2"
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            >
-              <Icon icon={faHeart} className="w-4 h-4 text-red-500" />
-            </motion.div>
-            <span>❤️ in Egypt 🇪🇬</span>
           </div>
 
-          {/* Scroll to Top Button */}
-          <motion.button
+          {/* Links */}
+          <div className="grid grid-cols-2 gap-8 lg:col-span-2">
+            <div className="space-y-8">
+              <h4 className="text-[10px] uppercase tracking-widest font-black text-dark-400">Navigation</h4>
+              <ul className="space-y-4">
+                {footerLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className="text-sm font-bold text-dark-500 hover:text-primary-500 transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-8">
+              <h4 className="text-[10px] uppercase tracking-widest font-black text-dark-400">Contact</h4>
+              <ul className="space-y-4">
+                <li>
+                  <a href={`mailto:${personalInfo.email}`} className="text-sm font-bold text-dark-500 hover:text-primary-500 transition-colors">
+                    {personalInfo.email}
+                  </a>
+                </li>
+                <li>
+                  <div className="text-sm font-bold text-dark-500">
+                    {personalInfo.location}
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="pt-12 border-t border-dark-100 dark:border-dark-900 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-2 text-dark-500 text-xs font-bold">
+            <span>© {currentYear} {personalInfo.name}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-dark-100 dark:bg-dark-800" />
+            <span className="flex items-center gap-1">
+              Built with <Icon icon={faHeart} className="w-3 h-3 text-red-500" /> in Egypt 🇪🇬
+            </span>
+          </div>
+
+          <button
             onClick={scrollToTop}
-            className="flex items-center space-x-2 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-2xl font-medium hover:shadow-lg transition-all duration-300"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            className="w-12 h-12 rounded-2xl glass-card flex items-center justify-center text-primary-500 hover:bg-primary-600 hover:text-white transition-all duration-500 group"
           >
-            <Icon icon={faArrowUp} className="w-5 h-5" />
-            <span>Back to Top</span>
-          </motion.button>
-        </motion.div>
+            <Icon icon={faArrowUp} className="w-4 h-4 transition-transform group-hover:-translate-y-1" />
+          </button>
+        </div>
       </div>
     </footer>
   );
 };
+
 
 export default Footer;

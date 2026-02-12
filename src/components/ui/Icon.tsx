@@ -6,9 +6,10 @@ interface IconProps {
   icon: IconDefinition | string;
   className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  style?: React.CSSProperties;
 }
 
-const Icon: React.FC<IconProps> = ({ icon, className, size = 'md' }) => {
+const Icon: React.FC<IconProps> = ({ icon, className, size = 'md', style }) => {
   const sizeClasses = {
     sm: 'w-4 h-4',
     md: 'w-5 h-5',
@@ -24,20 +25,23 @@ const Icon: React.FC<IconProps> = ({ icon, className, size = 'md' }) => {
   if (typeof icon === 'string') {
     // Fallback for string icons (like CSS classes)
     return (
-      <i 
-        className={cn(icon, sizeClasses[size], className)} 
+      <i
+        className={cn(icon, sizeClasses[size], className)}
+        style={style}
         aria-hidden="true"
       />
     );
   }
 
   return (
-    <FontAwesomeIcon 
-      icon={icon} 
+    <FontAwesomeIcon
+      icon={icon}
       className={cn(sizeClasses[size], className)}
+      style={style}
       aria-hidden="true"
     />
   );
 };
+
 
 export default Icon;

@@ -4,8 +4,8 @@ export { useIntersectionObserver } from './useIntersectionObserver';
 export { useLocalStorage } from './useLocalStorage';
 export { useDebounce } from './useDebounce';
 
-// Export new hooks (TypeScript files)
-export * from './useApi';
-export * from './useAnimations';
-export * from './useForms';
-export * from './useUI';
+// Export new hooks
+export * from './useApi.js';
+export * from './useAnimations.js';
+export * from './useForms.js';
+export * from './useUI.js';

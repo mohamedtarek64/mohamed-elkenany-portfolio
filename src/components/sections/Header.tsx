@@ -2,9 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '@/components/ui/Icon';
+import { cn } from '@/lib/utils';
+import { personalInfo } from '@/data/personal-info';
 import { faBars, faTimes, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,9 +16,8 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -24,7 +26,7 @@ const Header: React.FC = () => {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-    
+
     setIsDark(shouldBeDark);
     document.documentElement.classList.toggle('dark', shouldBeDark);
   }, []);
@@ -36,10 +38,6 @@ const Header: React.FC = () => {
     document.documentElement.classList.toggle('dark', newTheme);
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   const navItems = [
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
@@ -47,107 +45,101 @@ const Header: React.FC = () => {
     { href: '#experience', label: 'Experience' },
     { href: '#projects', label: 'Projects' },
     { href: '#contact', label: 'Contact' },
-    { href: 'https://drive.google.com/file/d/1Fnwo5QjWliJBbbXI0uHH3m7KOB0vAg8B/view?usp=sharing', label: 'CV', external: true },
   ];
 
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center py-6 pointer-events-none"
     >
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-primary">
-            Mohamed Elkenany
-          </Link>
+      <div className={cn(
+        "flex items-center gap-6 px-6 py-3 rounded-full transition-all duration-500 pointer-events-auto",
+        isScrolled
+          ? "glass-card shadow-2xl scale-95 md:scale-100 dark:bg-dark-900/60"
+          : "bg-transparent scale-100"
+      )}>
+        {/* Logo */}
+        <Link href="/" className="text-xl font-display font-black tracking-tighter text-primary-600 dark:text-primary-500">
+          ME.
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              item.external ? (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors duration-200"
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors duration-200"
-                >
-                  {item.label}
-                </Link>
-              )
-            ))}
-          </div>
-
-          {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-1">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="px-4 py-2 text-sm font-medium text-dark-600 dark:text-dark-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             >
-              <Icon icon={isDark ? faSun : faMoon} className="w-5 h-5" />
-            </button>
-
-            <button
-              onClick={toggleMenu}
-              className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              <Icon icon={isMenuOpen ? faTimes : faBars} className="w-5 h-5" />
-            </button>
-          </div>
+              {item.label}
+            </Link>
+          ))}
+          <a
+            href={personalInfo.cvUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 px-6 py-2 bg-primary-600 text-white rounded-full text-sm font-bold shadow-lg shadow-primary-500/20 hover:bg-primary-500 transition-all active:scale-95"
+          >
+            CV
+          </a>
         </div>
 
-        {/* Mobile Navigation */}
-        <motion.div
-          initial={false}
-          animate={{
-            height: isMenuOpen ? 'auto' : 0,
-            opacity: isMenuOpen ? 1 : 0,
-          }}
-          className="md:hidden overflow-hidden"
-        >
-          <div className="py-4 space-y-2">
-            {navItems.map((item) => (
-              item.external ? (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                >
-                  {item.label}
-                </a>
-              ) : (
+        <div className="flex items-center gap-2">
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="w-10 h-10 flex items-center justify-center rounded-full glass-card hover:bg-white dark:hover:bg-dark-800 transition-colors"
+          >
+            <Icon icon={isDark ? faSun : faMoon} className="w-4 h-4" />
+          </button>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-full glass-card hover:bg-white dark:hover:bg-dark-800"
+          >
+            <Icon icon={isMenuOpen ? faTimes : faBars} className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            className="absolute top-24 left-4 right-4 glass-card rounded-3xl p-6 md:hidden pointer-events-auto"
+          >
+            <div className="flex flex-col gap-2">
+              {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                  className="px-6 py-4 text-lg font-medium text-dark-700 dark:text-dark-200 hover:bg-dark-100 dark:hover:bg-dark-800 rounded-2xl transition-all"
                 >
                   {item.label}
                 </Link>
-              )
-            ))}
-          </div>
-        </motion.div>
-      </nav>
+              ))}
+              <a
+                href={personalInfo.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="mt-4 px-6 py-4 bg-primary-600 text-white text-center rounded-2xl font-bold shadow-lg shadow-primary-500/20"
+              >
+                Download CV
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };
+
 
 export default Header;

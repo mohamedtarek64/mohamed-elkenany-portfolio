@@ -17,20 +17,20 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center rounded-md font-medium transition-all duration-200',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50',
+        'inline-flex items-center justify-center rounded-full font-semibold transition-all duration-300',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/50',
         'disabled:pointer-events-none disabled:opacity-50',
-        'hover:scale-105 active:scale-95',
+        'active:scale-[0.97]',
         {
-          'bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl': variant === 'primary',
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80': variant === 'secondary',
-          'border border-primary text-primary hover:bg-primary hover:text-white': variant === 'outline',
-          'text-primary hover:bg-primary/10': variant === 'ghost',
+          'bg-primary-600 text-white hover:bg-primary-500 shadow-lg shadow-primary-500/20 hover:shadow-primary-500/40': variant === 'primary',
+          'bg-secondary-600 text-white hover:bg-secondary-500 shadow-lg shadow-secondary-500/20 hover:shadow-secondary-500/40': variant === 'secondary',
+          'border-2 border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white': variant === 'outline',
+          'text-dark-600 dark:text-dark-400 hover:bg-dark-100 dark:hover:bg-dark-800': variant === 'ghost',
         },
         {
-          'h-8 px-3 text-sm': size === 'sm',
-          'h-10 px-4 py-2': size === 'md',
-          'h-12 px-6 text-lg': size === 'lg',
+          'h-9 px-4 text-xs': size === 'sm',
+          'h-11 px-6 text-sm': size === 'md',
+          'h-14 px-8 text-base': size === 'lg',
         },
         className
       )}
@@ -40,5 +40,6 @@ const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+
 
 export default Button;
