@@ -114,11 +114,18 @@ p {
 
 /* Ensure proper section spacing */
 section {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 2rem 0;
+}
+
+/* Fix for mobile viewport */
+@media (min-width: 768px) {
+  section {
+    min-height: 100vh;
+  }
 }
 
 /* Fix container spacing */
