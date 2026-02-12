@@ -48,7 +48,7 @@ const config: Config = {
           900: '#134e4a',
           950: '#042f2e',
         },
-        dark: {
+        brandDark: {
           50: '#f8fafc',
           100: '#f1f5f9',
           200: '#e2e8f0',
