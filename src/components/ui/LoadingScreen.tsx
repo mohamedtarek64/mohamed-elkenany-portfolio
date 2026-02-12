@@ -9,12 +9,21 @@ const LoadingScreen: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Reduce loading time for better performance
+    // Reduce loading time for better performance on mobile
+    // Use a very short timeout to show loading briefly
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 600);
 
-    return () => clearTimeout(timer);
+    // Fallback: ensure content is always visible after 2 seconds max
+    const fallbackTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(fallbackTimer);
+    };
   }, []);
 
   return (
