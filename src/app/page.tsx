@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import { Header, Hero, About } from '@/components/sections';
-import { ScrollProgress, LoadingScreen, Particles, SmoothScroll } from '@/components/ui';
+import { ScrollProgress, LoadingScreen, Particles, SmoothScroll, MeshBackground } from '@/components/ui';
 
 // Lazy load heavy components with loading states
 const Skills = dynamic(() => import('@/components/sections/Skills'), {
@@ -28,9 +28,9 @@ export default function HomePage() {
     <>
       <LoadingScreen />
       <ScrollProgress />
-      <Particles />
+      <MeshBackground />
       <SmoothScroll />
-      <main className="relative w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
         <Header />
         <Hero />
         <About />
