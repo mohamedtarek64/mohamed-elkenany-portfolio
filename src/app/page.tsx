@@ -30,7 +30,7 @@ export default function HomePage() {
       <ScrollProgress />
       <Particles />
       <SmoothScroll />
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+      <main className="relative w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
         <Header />
         <Hero />
         <About />
