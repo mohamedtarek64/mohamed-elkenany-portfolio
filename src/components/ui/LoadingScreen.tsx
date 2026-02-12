@@ -2,27 +2,29 @@
 
 import React, { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Icon from './Icon';
-import { faCode, faRocket, faStar, faLaptop } from '@fortawesome/free-solid-svg-icons';
 
 const LoadingScreen: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Reduce loading time for better performance on mobile
-    // Use a very short timeout to show loading briefly
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 600);
+    const interval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return prev + Math.random() * 15;
+      });
+    }, 150);
 
-    // Fallback: ensure content is always visible after 2 seconds max
-    const fallbackTimer = setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
 
     return () => {
+      clearInterval(interval);
       clearTimeout(timer);
-      clearTimeout(fallbackTimer);
     };
   }, []);
 
@@ -31,200 +33,63 @@ const LoadingScreen: React.FC = () => {
       {isLoading && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-          className="fixed inset-0 z-50 bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-slate-900 flex items-center justify-center overflow-hidden"
+          exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="fixed inset-0 z-[100] bg-dark-950 flex flex-col items-center justify-center overflow-hidden"
         >
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 overflow-hidden">
+          {/* Subtle Ambient Glow */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <motion.div
-              className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl"
               animate={{
                 scale: [1, 1.2, 1],
-                opacity: [0.3, 0.6, 0.3],
-                rotate: [0, 180, 360]
+                opacity: [0.1, 0.2, 0.1]
               }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div
-              className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-tr from-accent/20 to-primary/20 rounded-full blur-3xl"
-              animate={{
-                scale: [1.2, 1, 1.2],
-                opacity: [0.6, 0.3, 0.6],
-                rotate: [360, 180, 0]
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2
-              }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-500/20 blur-[120px] rounded-full"
             />
           </div>
 
-          <div className="text-center relative z-10 px-4">
-            {/* Enhanced Logo Animation */}
+          <div className="relative z-10 flex flex-col items-center">
+            {/* Minimalist Logo/Brand */}
             <motion.div
-              className="relative mb-8 md:mb-12"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              {/* Glow Effect */}
-              <motion.div
-                className="absolute -inset-8 md:-inset-12 rounded-full bg-gradient-to-r from-primary via-secondary to-accent opacity-30 blur-2xl"
-                animate={{
-                  scale: [1, 1.3, 1],
-                  opacity: [0.3, 0.6, 0.3]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              {/* Main Logo Container */}
-              <motion.div
-                className="relative w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full bg-gradient-to-r from-primary via-secondary to-accent p-2 md:p-3 shadow-2xl"
-                animate={{ 
-                  rotate: 360,
-                  scale: [1, 1.05, 1]
-                }}
-                transition={{ 
-                  rotate: { duration: 4, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-                }}
-              >
-                <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900 shadow-inner flex items-center justify-center">
-                  <motion.div
-                    animate={{ 
-                      rotate: -360,
-                      scale: [1, 1.1, 1]
-                    }}
-                    transition={{ 
-                      rotate: { duration: 4, repeat: Infinity, ease: "linear" },
-                      scale: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
-                    }}
-                  >
-                    <Icon icon={faCode} className="w-10 h-10 md:w-12 md:h-12 text-primary" />
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              {/* Floating Icons */}
-              {[
-                { icon: faRocket, delay: 0, duration: 3 },
-                { icon: faStar, delay: 1, duration: 3 },
-                { icon: faLaptop, delay: 2, duration: 3 }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="absolute w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 backdrop-blur-sm flex items-center justify-center"
-                  style={{
-                    top: `${20 + index * 30}%`,
-                    left: `${10 + index * 20}%`,
-                  }}
-                  animate={{
-                    y: [-10, 10, -10],
-                    x: [-5, 5, -5],
-                    rotate: [0, 180, 360],
-                    opacity: [0.5, 1, 0.5]
-                  }}
-                  transition={{
-                    duration: item.duration,
-                    repeat: Infinity,
-                    delay: item.delay,
-                    ease: "easeInOut"
-                  }}
-                >
-                  <Icon icon={item.icon} className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Enhanced Loading Text */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ duration: 0.8 }}
+              className="mb-12"
             >
-              <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-2 md:mb-4"
-                animate={{ 
-                  backgroundPosition: ['0%', '100%', '0%']
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                Mohamed Elkenany
-              </motion.h1>
-              
-              <motion.p
-                className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 md:mb-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-                Full Stack Developer
-              </motion.p>
+              <div className="text-4xl md:text-5xl font-display font-black tracking-tighter text-white">
+                ME<span className="text-primary-500">.</span>
+              </div>
             </motion.div>
 
-            {/* Enhanced Loading Animation */}
+            {/* Premium Loading Bar */}
+            <div className="w-48 h-[2px] bg-white/5 relative overflow-hidden rounded-full">
+              <motion.divtd
+                className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary-600 to-primary-400"
+                style={{ width: `${Math.min(progress, 100)}%` }}
+                transition={{ type: "spring", stiffness: 50, damping: 20 }}
+              />
+            </div>
+
+            {/* Subtle Progress Text */}
             <motion.div
-              className="flex flex-col items-center space-y-4 md:space-y-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
+              className="mt-6 font-display text-[10px] uppercase tracking-[0.4em] font-bold text-dark-500"
+              animate={{ opacity: [0.3, 1, 0.3] }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
-              {/* Progress Bar */}
-              <div className="w-64 md:w-80 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden shadow-inner">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-primary via-secondary to-accent rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 2, ease: "easeInOut" }}
-                />
-              </div>
-
-              {/* Loading Dots */}
-              <div className="flex justify-center space-x-3">
-                {[0, 1, 2, 3].map((index) => (
-                  <motion.div
-                    key={index}
-                    className="w-3 h-3 md:w-4 md:h-4 bg-gradient-to-r from-primary to-secondary rounded-full shadow-lg"
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [0.4, 1, 0.4],
-                      y: [-5, 5, -5]
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      delay: index * 0.2,
-                      ease: "easeInOut"
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Loading Text */}
-              <motion.p
-                className="text-base md:text-lg text-gray-500 dark:text-gray-400 font-medium"
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              >
-                Preparing your experience...
-              </motion.p>
+              Initializing Systems
             </motion.div>
           </div>
+
+          {/* Perspective Grid Background */}
+          <div
+            className="absolute inset-0 opacity-[0.05] pointer-events-none"
+            style={{
+              backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+              backgroundSize: '80px 80px',
+              maskImage: 'radial-gradient(circle at 50% 50%, black, transparent 80%)'
+            }}
+          />
         </motion.div>
       )}
     </AnimatePresence>
