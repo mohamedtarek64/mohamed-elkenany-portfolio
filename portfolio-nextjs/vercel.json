@@ -1,0 +1,15 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "functions": {
+    "src/app/api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "https://mohamed-elkenany.vercel.app",
+    "CONTACT_EMAIL": "mohamed20220632@gmail.com",
+    "NEXT_PUBLIC_GA_ID": "G-XXXXXXXXXX"
+  }
+}

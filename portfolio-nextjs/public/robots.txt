@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mohamed-elkenany.vercel.app/sitemap.xml
+
+# Disallow admin areas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow important pages
+Allow: /
+Allow: /cv
+Allow: /#about
+Allow: /#skills
+Allow: /#experience
+Allow: /#projects
+Allow: /#contact

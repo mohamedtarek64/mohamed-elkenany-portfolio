@@ -44,6 +44,6 @@ mohamed-elkenany-cv.tex
 PROJECT_PROMPT.md
 force-rebuild.txt
 package-main.json
-portfolio-nextjs/
+
 
 # Note: images/ removed from ignore list to allow Next.js images to be uploaded
