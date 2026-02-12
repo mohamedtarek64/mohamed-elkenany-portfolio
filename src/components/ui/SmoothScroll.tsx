@@ -7,30 +7,38 @@ const SmoothScroll: React.FC = () => {
     // Add smooth scrolling behavior
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    // Handle anchor links
+    // Handle anchor links - only for internal links
     const handleAnchorClick = (e: Event) => {
-      const target = e.target as HTMLAnchorElement;
-      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+      const target = e.target as HTMLElement;
+      
+      // Check if the clicked element is a link
+      const link = target.closest('a');
+      if (!link || !link.getAttribute('href')?.startsWith('#')) {
+        return;
+      }
+
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
         e.preventDefault();
-        const targetId = target.getAttribute('href')?.substring(1);
-        const targetElement = document.getElementById(targetId || '');
+        const headerHeight = 80; // Adjust based on your header height
+        const targetPosition = targetElement.offsetTop - headerHeight;
         
-        if (targetElement) {
-          const headerHeight = 80; // Adjust based on your header height
-          const targetPosition = targetElement.offsetTop - headerHeight;
-          
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
       }
     };
 
-    document.addEventListener('click', handleAnchorClick);
+    document.addEventListener('click', handleAnchorClick, true);
 
     return () => {
-      document.removeEventListener('click', handleAnchorClick);
+      document.removeEventListener('click', handleAnchorClick, true);
       document.documentElement.style.scrollBehavior = 'auto';
     };
   }, []);
