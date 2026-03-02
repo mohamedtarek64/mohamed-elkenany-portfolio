@@ -166,6 +166,36 @@ export const projects: Project[] = [
     startDate: '2024-08-01',
     endDate: '2024-11-01',
   },
+  // 12. Laravel Reusable Admin Dashboard
+  {
+    id: 'laravel-admin-dashboard',
+    title: 'AdminHub – Reusable Admin Dashboard',
+    description: 'Enterprise-grade reusable admin panel package for Laravel',
+    longDescription: 'A production-ready, plug-and-play Laravel admin dashboard package featuring a sci-fi glassmorphism UI, multi-tenancy support, role/permission management, media library, analytics, and a command palette. Designed as a reusable package installable in any Laravel project.',
+    image: '/images/projects/admin-dashboard.png',
+    technologies: ['Laravel 12', 'Livewire 3', 'Tailwind CSS', 'Alpine.js', 'Spatie Permissions', 'Chart.js'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/mohamedtarek64/Laravel-Reusable-Admin-Dashboard',
+    featured: true,
+    category: 'web',
+    startDate: '2025-01-01',
+    endDate: '2025-03-01',
+  },
+  // 13. AI-Based Multi-Disease Risk Prediction System
+  {
+    id: 'ai-disease-prediction',
+    title: 'MedPredict AI',
+    description: 'AI-powered multi-disease risk prediction and early diagnosis system',
+    longDescription: 'A clinical decision support system leveraging machine learning models to predict risk for multiple diseases including diabetes, heart disease, and kidney disease. Features patient data management, risk scoring dashboards, and model explainability with SHAP values.',
+    image: '/images/projects/disease-prediction.png',
+    technologies: ['Python', 'FastAPI', 'Scikit-learn', 'XGBoost', 'React', 'Docker'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/mohamedtarek64/AI-Based-Multi-Disease-Prediction',
+    featured: true,
+    category: 'web',
+    startDate: '2025-02-01',
+    endDate: '2025-04-01',
+  },
 ];
 
 export default projects;
