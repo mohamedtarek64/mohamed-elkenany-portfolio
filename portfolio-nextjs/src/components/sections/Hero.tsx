@@ -49,15 +49,17 @@ const Hero: React.FC = () => {
       </div>
 
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
         className="container mx-auto px-4 relative z-10"
       >
         <div className="flex flex-col items-center">
           {/* Enhanced Profile Image */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="mb-10 md:mb-14 relative group animate-float"
           >
             <div className="image-frame">
@@ -82,7 +84,12 @@ const Hero: React.FC = () => {
           </motion.div>
 
           {/* Enhanced Main Content */}
-          <motion.div variants={itemVariants} className="max-w-4xl text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="max-w-4xl text-center space-y-6"
+          >
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tight dark:text-white leading-[1.1]">
               I'm <span className="gradient-text">{personalInfo.name}</span>
             </h1>
@@ -103,7 +110,9 @@ const Hero: React.FC = () => {
 
           {/* Enhanced Action Buttons */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-5 mt-12 justify-center w-full sm:w-auto"
           >
             <button
@@ -124,7 +133,9 @@ const Hero: React.FC = () => {
 
           {/* Social Links - Minimized Premium Style */}
           <motion.div
-            variants={itemVariants}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
             className="flex gap-4 mt-12"
           >
             {socialLinks.map((link) => (
