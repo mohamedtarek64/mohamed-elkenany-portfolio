@@ -38,7 +38,7 @@ const Experience: React.FC = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0.01 }}
+        initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0 }}
         transition={{ duration: 0.5 }}
@@ -46,13 +46,18 @@ const Experience: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-24">
           <motion.h2
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="text-4xl md:text-6xl font-display font-black tracking-tight mb-6 dark:text-white"
           >
             Professional <span className="gradient-text">Journey</span>
           </motion.h2>
           <motion.p
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
             className="text-lg text-dark-500 dark:text-dark-400 max-w-2xl mx-auto"
           >
             A timeline of my growth as a developer and the companies I've helped.

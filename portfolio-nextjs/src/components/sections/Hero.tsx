@@ -49,9 +49,9 @@ const Hero: React.FC = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.1 }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
         className="container mx-auto px-4 relative z-10"
       >
         <div className="flex flex-col items-center">

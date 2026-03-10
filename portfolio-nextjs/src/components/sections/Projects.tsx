@@ -56,27 +56,38 @@ const Projects: React.FC = () => {
       </div>
 
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.5 }}
         className="relative z-10"
       >
         {/* Section Header */}
         <div className="text-center mb-24">
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-400 text-xs font-black uppercase tracking-widest mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-400 text-xs font-black uppercase tracking-widest mb-6"
+          >
             <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
             Portfolio
           </motion.div>
           <motion.h2
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
             className="text-4xl md:text-7xl font-display font-black tracking-tight mb-8 dark:text-white"
           >
             Engineering <br />
             <span className="gradient-text">Masterpieces</span>
           </motion.h2>
           <motion.p
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
             className="text-lg text-dark-500 dark:text-dark-400 max-w-2xl mx-auto leading-relaxed"
           >
             A showcase of complex systems and elegant solutions built with technical precision and scalable architectures.
@@ -84,7 +95,13 @@ const Projects: React.FC = () => {
         </div>
 
         {/* Category Filter - Premium Tabs */}
-        <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="flex flex-wrap justify-center gap-4 mb-20"
+        >
           {categories.map((category) => (
             <motion.button
               key={category.id}
@@ -121,7 +138,8 @@ const Projects: React.FC = () => {
                 key={project.id}
                 layout
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="group"

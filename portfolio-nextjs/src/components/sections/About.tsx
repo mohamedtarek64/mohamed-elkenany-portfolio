@@ -44,15 +44,21 @@ const About: React.FC = () => {
       </div>
 
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.5 }}
         className="relative z-10"
       >
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Image Side */}
-          <motion.div variants={itemVariants} className="relative">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
             <div className="image-frame aspect-square max-w-md mx-auto">
               <div className="w-full h-full rounded-2xl overflow-hidden relative z-10 grayscale hover:grayscale-0 transition-all duration-700 border border-dark-100 dark:border-dark-800">
                 <Image
@@ -66,7 +72,13 @@ const About: React.FC = () => {
           </motion.div>
 
           {/* Content Side */}
-          <motion.div variants={itemVariants} className="space-y-10">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-10"
+          >
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-400 text-xs font-bold uppercase tracking-widest mb-6">
                 <Icon icon={faUser} className="w-3 h-3" />

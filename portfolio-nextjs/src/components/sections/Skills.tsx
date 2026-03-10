@@ -52,21 +52,26 @@ const Skills: React.FC = () => {
       </div>
 
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.01 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.5 }}
       >
         {/* Section Header */}
         <div className="text-center mb-20">
           <motion.h2
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="text-4xl md:text-6xl font-display font-black tracking-tight mb-6 dark:text-white"
           >
             Technical <span className="gradient-text">Arsenal</span>
           </motion.h2>
           <motion.p
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
             className="text-lg text-dark-500 dark:text-dark-400 max-w-2xl mx-auto"
           >
             A curated collection of technologies I've mastered to build resilient and scalable systems.
