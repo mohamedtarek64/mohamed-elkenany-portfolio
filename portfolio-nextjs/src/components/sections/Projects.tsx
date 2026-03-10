@@ -59,7 +59,7 @@ const Projects: React.FC = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.01 }}
+        viewport={{ once: true, amount: 0 }}
         className="relative z-10"
       >
         {/* Section Header */}

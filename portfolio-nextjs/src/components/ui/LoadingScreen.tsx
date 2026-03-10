@@ -33,8 +33,8 @@ const LoadingScreen: React.FC = () => {
       {isLoading && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
           className="fixed inset-0 z-[100] bg-dark-950 flex flex-col items-center justify-center overflow-hidden"
         >
           {/* Subtle Ambient Glow */}

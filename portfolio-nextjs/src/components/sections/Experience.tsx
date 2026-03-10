@@ -38,10 +38,10 @@ const Experience: React.FC = () => {
       </div>
 
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.01 }}
+        initial={{ opacity: 0.01 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.5 }}
       >
         {/* Section Header */}
         <div className="text-center mb-24">
