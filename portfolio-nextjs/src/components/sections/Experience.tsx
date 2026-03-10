@@ -41,7 +41,7 @@ const Experience: React.FC = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.02 }}
+        viewport={{ once: true, amount: 0.01 }}
       >
         {/* Section Header */}
         <div className="text-center mb-24">

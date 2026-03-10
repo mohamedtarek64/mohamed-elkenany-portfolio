@@ -47,7 +47,7 @@ const About: React.FC = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.02 }}
+        viewport={{ once: true, amount: 0.01 }}
         className="relative z-10"
       >
         <div className="grid lg:grid-cols-2 gap-20 items-center">

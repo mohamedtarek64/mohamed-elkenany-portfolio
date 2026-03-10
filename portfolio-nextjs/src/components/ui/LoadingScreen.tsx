@@ -64,9 +64,11 @@ const LoadingScreen: React.FC = () => {
 
             {/* Premium Loading Bar */}
             <div className="w-48 h-[2px] bg-white/5 relative overflow-hidden rounded-full">
-              <motion.divtd
+              <motion.div
                 className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary-600 to-primary-400"
                 style={{ width: `${Math.min(progress, 100)}%` }}
+                initial={{ width: 0 }}
+                animate={{ width: `${Math.min(progress, 100)}%` }}
                 transition={{ type: "spring", stiffness: 50, damping: 20 }}
               />
             </div>
