@@ -48,11 +48,11 @@ export async function POST(request: NextRequest) {
     // console.error('❌ Contact form error:', error);
     
     if (error instanceof z.ZodError) {
-      // console.log('❌ Validation errors:', error.errors);
+      const errorMessages = error.errors.map(err => `${err.path.join('.')}: ${err.message}`).join(', ');
       return NextResponse.json(
         { 
-          message: 'Validation error', 
-          errors: error.errors,
+          message: 'Validation failed', 
+          details: errorMessages,
           success: false 
         },
         { status: 400 }
