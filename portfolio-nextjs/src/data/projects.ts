@@ -7,7 +7,7 @@ export const projects: Project[] = [
     title: 'NeuralCore AI System',
     description: 'Enterprise-grade Clinical AI for Multi-Disease Risk Assessment',
     longDescription: 'An advanced, decentralized microservices ecosystem designed for high-precision disease risk evaluation. Featuring a "Clinical Terminal" interface, it integrates 7 specialist XGBoost models with SHAP-based explainability, allowing medical professionals to understand the exact clinical factors behind every AI prediction.',
-    image: '/images/projects/ai-disease.png',
+    image: '/images/projects/disease-prediction.png',
     technologies: ['Laravel 12', 'Vue 3', 'FastAPI', 'XGBoost', 'Docker', 'Kubernetes'],
     liveUrl: '#',
     githubUrl: 'https://github.com/mohamedtarek64/AI-Based-Disease-Prediction',
