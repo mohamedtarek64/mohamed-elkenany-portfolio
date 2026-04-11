@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { personalInfo } from '@/data/personal-info';
 import Icon from '@/components/ui/Icon';
-import { faCode, faRocket, faHeart, faUser, faMapMarkerAlt, faDownload, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faRocket, faUser, faMapMarkerAlt, faDownload, faGraduationCap, faBolt, faLayerGroup, faLightbulb } from '@fortawesome/free-solid-svg-icons';
 
 const About: React.FC = () => {
   const containerVariants = {
@@ -30,10 +30,10 @@ const About: React.FC = () => {
     },
   };
 
-  const stats = [
-    { label: 'Projects', value: personalInfo.stats.projects, icon: faCode },
-    { label: 'Clients', value: personalInfo.stats.clients, icon: faHeart },
-    { label: 'Satisfaction', value: '100%', icon: faStar },
+  const achievements = [
+    { label: 'Production Systems', value: '6', icon: faLayerGroup },
+    { label: 'Avg. Performance Gain', value: '45%', icon: faBolt },
+    { label: 'Real-Time Systems', value: '3', icon: faRocket },
   ];
 
   return (
@@ -44,15 +44,21 @@ const About: React.FC = () => {
       </div>
 
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.5 }}
         className="relative z-10"
       >
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Image Side */}
-          <motion.div variants={itemVariants} className="relative">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
             <div className="image-frame aspect-square max-w-md mx-auto">
               <div className="w-full h-full rounded-2xl overflow-hidden relative z-10 grayscale hover:grayscale-0 transition-all duration-700 border border-dark-100 dark:border-dark-800">
                 <Image
@@ -66,25 +72,35 @@ const About: React.FC = () => {
           </motion.div>
 
           {/* Content Side */}
-          <motion.div variants={itemVariants} className="space-y-10">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-10"
+          >
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-400 text-xs font-bold uppercase tracking-widest mb-6">
                 <Icon icon={faUser} className="w-3 h-3" />
                 About Me
               </div>
               <h2 className="text-4xl md:text-5xl font-display font-black tracking-tight mb-6 dark:text-white">
-                Designing Digital <br />
-                <span className="gradient-text">Excellence.</span>
+                Building Real <br />
+                <span className="gradient-text">Solutions.</span>
               </h2>
               <p className="text-lg text-dark-500 dark:text-dark-400 leading-relaxed max-w-xl">
-                {personalInfo.description}
+                Third-year Information Systems student transitioning from academics to industry. 
+                Completed an intensive 3-month internship where I optimized database queries and 
+                architected REST APIs. Now building a portfolio of 6 production-ready projects 
+                focused on scalable web systems, real-time applications, and 3D web technologies.
               </p>
             </div>
 
-            {/* Stats Grid */}
+            {/* Honest Stats Grid */}
             <div className="grid grid-cols-3 gap-4">
-              {stats.map((stat) => (
+              {achievements.map((stat) => (
                 <div key={stat.label} className="glass-card p-4 rounded-2xl text-center hover:border-primary-500/30 transition-colors">
+                  <Icon icon={stat.icon} className="w-4 h-4 text-primary-500 mx-auto mb-2" />
                   <div className="text-xl font-black dark:text-white mb-1">{stat.value}</div>
                   <div className="text-[10px] uppercase tracking-widest font-bold text-dark-400">{stat.label}</div>
                 </div>
@@ -94,9 +110,10 @@ const About: React.FC = () => {
             {/* Info List */}
             <div className="space-y-4">
               {[
-                { label: 'Role', value: personalInfo.title, icon: faCode },
+                { label: 'Status', value: 'Student + Building Portfolio', icon: faGraduationCap },
                 { label: 'Location', value: personalInfo.location, icon: faMapMarkerAlt },
-                { label: 'Availability', value: 'Ready for Projects', icon: faRocket },
+                { label: 'Focus', value: 'Full-Stack Web Development', icon: faCode },
+                { label: 'Seeking', value: 'Internships & Junior Positions', icon: faLightbulb },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-4 group">
                   <div className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-primary-500 group-hover:bg-primary-500 group-hover:text-white transition-all">
@@ -116,7 +133,7 @@ const About: React.FC = () => {
                 className="premium-button flex items-center gap-3"
               >
                 <Icon icon={faDownload} className="w-4 h-4 text-white" />
-                <span>My Philosophy</span>
+                <span>Download CV</span>
               </button>
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -127,6 +144,35 @@ const About: React.FC = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* Technical Approach Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-24 glass-card p-8 md:p-12 rounded-[2.5rem]"
+        >
+          <h3 className="text-2xl font-display font-black dark:text-white mb-8 text-center">
+            My <span className="gradient-text">Technical Approach</span>
+          </h3>
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { icon: faCode, title: 'Clean Code', desc: 'Writing maintainable, well-documented code following SOLID principles' },
+              { icon: faBolt, title: 'Performance', desc: 'Optimizing database queries and achieving 45-85% improvements across projects' },
+              { icon: faLayerGroup, title: 'Scalable Design', desc: 'Building architectures that handle real-world traffic and grow with demand' },
+              { icon: faLightbulb, title: 'Always Learning', desc: 'Each project explores new technologies and pushes my capabilities further' },
+            ].map((item) => (
+              <div key={item.title} className="text-center space-y-3 p-4">
+                <div className="w-12 h-12 rounded-2xl bg-primary-50 dark:bg-primary-950/30 flex items-center justify-center mx-auto">
+                  <Icon icon={item.icon} className="w-5 h-5 text-primary-500" />
+                </div>
+                <h4 className="text-sm font-black dark:text-white">{item.title}</h4>
+                <p className="text-xs text-dark-400 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

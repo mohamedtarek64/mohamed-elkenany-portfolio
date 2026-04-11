@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
-    { href: '#experience', label: 'Experience' },
+    { href: '#experience', label: 'Journey' },
     { href: '#projects', label: 'Projects' },
     { href: '#contact', label: 'Contact' },
   ];
@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
               ME<span className="text-primary-600">.</span>
             </Link>
             <p className="text-lg text-dark-500 dark:text-dark-400 max-w-sm leading-relaxed">
-              Crafting premium digital experiences through purposeful design and technical excellence.
+              Third-year Information Systems student passionate about building scalable web solutions and continuously growing as a developer.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((link) => (
@@ -83,6 +83,11 @@ const Footer: React.FC = () => {
                     {personalInfo.location}
                   </div>
                 </li>
+                <li>
+                  <div className="text-sm font-bold text-primary-500">
+                    Graduating June 2026
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -94,7 +99,7 @@ const Footer: React.FC = () => {
             <span>© {currentYear} {personalInfo.name}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-dark-100 dark:bg-dark-800" />
             <span className="flex items-center gap-1">
-              Built with <Icon icon={faHeart} className="w-3 h-3 text-primary-500" /> in Egypt 🇪🇬
+              Built with <Icon icon={faHeart} className="w-3 h-3 text-red-500" /> in Egypt 🇪🇬
             </span>
           </div>
 

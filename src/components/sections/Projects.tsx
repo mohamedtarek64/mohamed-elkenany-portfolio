@@ -8,7 +8,7 @@ import Button from '@/components/ui/Button';
 import { projects } from '@/data/projects';
 import Icon from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
-import { faExternalLinkAlt, faCode, faStar, faEye, faHeart, faRocket, faGlobe, faMobile, faDesktop, faTools, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt, faCode, faStar, faEye, faBolt, faRocket, faGlobe, faMobile, faDesktop, faTools, faChevronRight, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -19,34 +19,11 @@ const Projects: React.FC = () => {
   const categories = [
     { id: 'all', label: 'All Projects', icon: faStar, count: projects.length },
     { id: 'web', label: 'Web Systems', icon: faGlobe, count: projects.filter(p => p.category === 'web').length },
-    { id: 'mobile', label: 'Mobile Apps', icon: faMobile, count: projects.filter(p => p.category === 'mobile').length },
   ];
 
   const filteredProjects = activeCategory === 'all'
     ? projects
     : projects.filter(project => project.category === activeCategory);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
-  };
 
   return (
     <section id="projects" className="section-container relative overflow-hidden transition-colors duration-500">
@@ -56,59 +33,43 @@ const Projects: React.FC = () => {
       </div>
 
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.5 }}
         className="relative z-10"
       >
         {/* Section Header */}
         <div className="text-center mb-24">
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-400 text-xs font-black uppercase tracking-widest mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-400 text-xs font-black uppercase tracking-widest mb-6"
+          >
             <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
             Portfolio
           </motion.div>
           <motion.h2
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
             className="text-4xl md:text-7xl font-display font-black tracking-tight mb-8 dark:text-white"
           >
-            Engineering <br />
-            <span className="gradient-text">Masterpieces</span>
+            Production-Ready <br />
+            <span className="gradient-text">Systems</span>
           </motion.h2>
           <motion.p
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
             className="text-lg text-dark-500 dark:text-dark-400 max-w-2xl mx-auto leading-relaxed"
           >
-            A showcase of complex systems and elegant solutions built with technical precision and scalable architectures.
+            6 complete full-stack projects — each solving real-world problems with measurable results and scalable architectures.
           </motion.p>
         </div>
-
-        {/* Category Filter - Premium Tabs */}
-        <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-20">
-          {categories.map((category) => (
-            <motion.button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className={cn(
-                "px-8 py-4 rounded-2xl text-sm font-bold transition-all duration-500 flex items-center gap-3 relative overflow-hidden group",
-                activeCategory === category.id
-                  ? "bg-dark-900 dark:bg-white text-white dark:text-dark-950 shadow-2xl"
-                  : "glass-card text-dark-500 dark:text-dark-400 hover:bg-white dark:hover:bg-dark-900"
-              )}
-            >
-              <Icon icon={category.icon} className={cn("w-4 h-4 transition-colors", activeCategory === category.id ? "text-primary-500" : "text-dark-400")} />
-              <span>{category.label}</span>
-              <span className={cn(
-                "ml-2 text-[10px] font-black px-2 py-0.5 rounded-lg",
-                activeCategory === category.id ? "bg-primary-500 text-white" : "bg-dark-100 dark:bg-dark-800"
-              )}>
-                {category.count}
-              </span>
-            </motion.button>
-          ))}
-        </motion.div>
 
         {/* Projects Grid */}
         <motion.div
@@ -121,7 +82,8 @@ const Projects: React.FC = () => {
                 key={project.id}
                 layout
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="group"
@@ -137,12 +99,15 @@ const Projects: React.FC = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/10 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
-                    {/* Category Badge */}
-                    <div className="absolute top-6 left-6">
-                      <span className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-[10px] font-black text-white uppercase tracking-widest">
-                        {project.category}
-                      </span>
-                    </div>
+                    {/* Metrics Badge */}
+                    {project.metrics && (
+                      <div className="absolute top-6 left-6">
+                        <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-[10px] font-black text-white uppercase tracking-widest">
+                          <Icon icon={faBolt} className="w-2.5 h-2.5 text-primary-400" />
+                          {project.metrics.highlight}
+                        </span>
+                      </div>
+                    )}
 
                     {/* GitHub Link Overlay */}
                     <div className="absolute top-6 right-6 flex gap-3">
@@ -159,32 +124,57 @@ const Projects: React.FC = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="p-8 md:p-10 space-y-6">
+                  <div className="p-8 md:p-10 space-y-5">
                     <div className="space-y-3">
                       <h3 className="text-2xl md:text-3xl font-display font-black dark:text-white transition-colors group-hover:text-primary-600 dark:group-hover:text-primary-500">
                         {project.title}
                       </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.slice(0, 4).map(tech => (
-                          <span key={tech} className="text-[10px] font-black uppercase tracking-tighter text-dark-400 dark:text-dark-500">
-                            #{tech.replace(/\s+/g, '')}
-                          </span>
-                        ))}
-                      </div>
+                      <p className="text-dark-500 dark:text-dark-400 text-sm leading-relaxed">
+                        {project.description}
+                      </p>
                     </div>
 
-                    <p className="text-dark-500 dark:text-dark-400 text-sm leading-relaxed line-clamp-2">
-                      {project.description}
-                    </p>
+                    {/* Tech Stack as Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map(tech => (
+                        <span key={tech} className="px-2.5 py-1 rounded-lg bg-dark-50 dark:bg-dark-800 text-dark-600 dark:text-dark-300 text-[10px] font-bold border border-dark-100 dark:border-dark-700">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
 
-                    <div className="pt-4">
-                      <button
-                        onClick={() => window.open(project.liveUrl || project.githubUrl, '_blank')}
-                        className="premium-button w-full flex items-center justify-center gap-3 py-4 group/btn"
+                    {/* Key Achievements */}
+                    {project.metrics && (
+                      <div className="space-y-2 pt-2">
+                        {project.metrics.items.slice(0, 3).map((item, i) => (
+                          <div key={i} className="flex items-start gap-2 text-xs text-dark-500 dark:text-dark-400">
+                            <Icon icon={faChevronRight} className="w-2 h-2 text-primary-500 mt-1 shrink-0" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-3 pt-3">
+                      <a
+                        href={project.githubUrl || '#'}
+                        target="_blank"
+                        className="flex-1 premium-button flex items-center justify-center gap-2 py-3 group/btn"
                       >
-                        <span className="text-sm font-black">Case Study & Demo</span>
-                        <Icon icon={faChevronRight} className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
-                      </button>
+                        <Icon icon={faGithub} className="w-3.5 h-3.5" />
+                        <span className="text-[10px] font-black">View Code</span>
+                      </a>
+                      {project.liveUrl && project.liveUrl !== '#' && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          className="flex-1 secondary-button flex items-center justify-center gap-2 py-3 group/btn"
+                        >
+                          <Icon icon={faExternalLinkAlt} className="w-3 h-3" />
+                          <span className="text-[10px] font-black">Live Demo</span>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -192,10 +182,37 @@ const Projects: React.FC = () => {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Numbers That Matter */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-24 glass-card p-8 md:p-12 rounded-[2.5rem] max-w-5xl mx-auto"
+        >
+          <h3 className="text-xl font-display font-black dark:text-white mb-8 text-center">
+            Numbers That <span className="gradient-text">Matter</span>
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+            {[
+              { value: '6', label: 'Production Systems', icon: faCode },
+              { value: '300+', label: 'Daily Transactions', icon: faChartLine },
+              { value: '85%', label: 'Query Optimization', icon: faRocket },
+              { value: '180ms', label: 'API Response Time', icon: faBolt },
+              { value: '60fps', label: '3D Rendering', icon: faEye },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center space-y-2 group">
+                <Icon icon={stat.icon} className="w-5 h-5 text-primary-500 mx-auto opacity-60 group-hover:opacity-100 transition-opacity" />
+                <div className="text-2xl md:text-3xl font-black dark:text-white">{stat.value}</div>
+                <div className="text-[9px] uppercase tracking-widest font-bold text-dark-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );
 };
 
 export default Projects;
-
