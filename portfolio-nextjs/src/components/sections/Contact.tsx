@@ -6,7 +6,7 @@ import { socialLinks } from '@/data/social-links';
 import { personalInfo } from '@/data/personal-info';
 import { cn } from '@/lib/utils';
 import Icon from '@/components/ui/Icon';
-import { faEnvelope, faPhone, faMapMarkerAlt, faPaperPlane, faCheck, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone, faMapMarkerAlt, faPaperPlane, faCheck, faClock, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -96,7 +96,7 @@ const Contact: React.FC = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-display font-black tracking-tight mb-6 dark:text-white"
           >
-            Let's Build <span className="gradient-text">Together</span>
+            Let's <span className="gradient-text">Connect</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -105,7 +105,7 @@ const Contact: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-lg text-dark-500 dark:text-dark-400 max-w-2xl mx-auto"
           >
-            Have a project in mind? Reach out and let's start a conversation.
+            Interested in working together? I'd love to hear about opportunities.
           </motion.p>
         </div>
 
@@ -149,7 +149,7 @@ const Contact: React.FC = () => {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    placeholder="Tell me about your vision..."
+                    placeholder="Tell me about the opportunity..."
                     className="w-full px-6 py-4 rounded-2xl bg-dark-50 dark:bg-dark-900 border-none focus:ring-2 focus:ring-primary-500/20 text-dark-900 dark:text-white transition-all outline-none resize-none"
                   />
                 </div>
@@ -207,7 +207,7 @@ const Contact: React.FC = () => {
               </div>
 
               <div className="mt-12 pt-12 border-t border-dark-100 dark:border-dark-800">
-                <h4 className="text-[10px] uppercase tracking-widest font-black text-dark-400 mb-6">Social Influence</h4>
+                <h4 className="text-[10px] uppercase tracking-widest font-black text-dark-400 mb-6">Find Me Online</h4>
                 <div className="flex gap-4">
                   {socialLinks.map((link) => (
                     <a
@@ -223,15 +223,15 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            {/* Availability Badge */}
+            {/* Availability Badge — Honest */}
             <div className="glass-card p-8 rounded-[2rem] flex items-center gap-6">
               <div className="relative">
-                <div className="w-4 h-4 rounded-full bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.5)]" />
-                <div className="absolute inset-0 w-4 h-4 rounded-full bg-green-500 animate-ping" />
+                <div className="w-4 h-4 rounded-full bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
+                <div className="absolute inset-0 w-4 h-4 rounded-full bg-blue-500 animate-ping" />
               </div>
               <div>
-                <div className="text-sm font-black dark:text-white">Available for Freelance</div>
-                <div className="text-xs text-dark-400 mt-0.5">Currently taking new projects</div>
+                <div className="text-sm font-black dark:text-white">Open to Opportunities</div>
+                <div className="text-xs text-dark-400 mt-0.5">Graduating June 2026 · Seeking junior positions</div>
               </div>
             </div>
           </motion.div>

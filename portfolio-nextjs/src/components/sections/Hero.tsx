@@ -3,41 +3,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Button from '@/components/ui/Button';
 import Icon from '@/components/ui/Icon';
 import Typewriter from '@/components/ui/Typewriter';
 import { socialLinks } from '@/data/social-links';
 import { personalInfo } from '@/data/personal-info';
-import { faDownload, faChevronDown, faRocket, faProjectDiagram, faSmile, faStar, faLaptop, faCode, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faChevronDown, faGraduationCap, faLaptopCode, faBolt } from '@fortawesome/free-solid-svg-icons';
 
 const Hero: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 40, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
-  };
-
   const stats = [
-    { label: personalInfo.stats.experience, value: 'Experience', icon: faRocket },
-    { label: personalInfo.stats.projects, value: 'Projects', icon: faProjectDiagram },
-    { label: personalInfo.stats.clients || '5+', value: 'Happy Clients', icon: faSmile },
+    { label: 'Internship Completed', value: personalInfo.stats.experience, icon: faGraduationCap },
+    { label: 'Production Systems', value: personalInfo.stats.projects, icon: faLaptopCode },
+    { label: 'Graduating', value: personalInfo.stats.graduation, icon: faBolt },
   ];
 
   return (
@@ -83,6 +59,19 @@ const Hero: React.FC = () => {
 
           </motion.div>
 
+          {/* Student Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+            className="mb-6"
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-400 text-xs font-bold uppercase tracking-widest border border-primary-200 dark:border-primary-800/40">
+              <Icon icon={faGraduationCap} className="w-3 h-3" />
+              3rd Year Information Systems Student
+            </span>
+          </motion.div>
+
           {/* Enhanced Main Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -96,7 +85,7 @@ const Hero: React.FC = () => {
 
             <div className="text-xl sm:text-2xl md:text-4xl font-display font-medium text-dark-600 dark:text-dark-300">
               <Typewriter
-                words={personalInfo.roles || [personalInfo.title, 'Full Stack Systems Architect', 'Backend Specialist']}
+                words={personalInfo.roles || [personalInfo.title]}
                 speed={80}
                 deleteSpeed={40}
                 pauseTime={2500}
@@ -108,12 +97,28 @@ const Hero: React.FC = () => {
             </p>
           </motion.div>
 
+          {/* Honest Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.8 }}
+            className="grid grid-cols-3 gap-4 sm:gap-6 mt-10 w-full max-w-lg"
+          >
+            {stats.map((stat) => (
+              <div key={stat.label} className="glass-card p-3 sm:p-4 rounded-2xl text-center hover:border-primary-500/30 transition-colors">
+                <Icon icon={stat.icon} className="w-4 h-4 text-primary-500 mx-auto mb-1.5" />
+                <div className="text-sm sm:text-lg font-black dark:text-white mb-0.5">{stat.value}</div>
+                <div className="text-[8px] sm:text-[10px] uppercase tracking-widest font-bold text-dark-400">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+
           {/* Enhanced Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-5 mt-12 justify-center w-full sm:w-auto"
+            className="flex flex-col sm:flex-row gap-5 mt-10 justify-center w-full sm:w-auto"
           >
             <button
               onClick={() => window.open(personalInfo.cvUrl, '_blank')}
@@ -136,7 +141,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex gap-4 mt-12"
+            className="flex gap-4 mt-10"
           >
             {socialLinks.map((link) => (
               <motion.a
