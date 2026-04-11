@@ -61,7 +61,7 @@ const Header: React.FC = () => {
       )}>
         {/* Logo */}
         <Link href="/" className="text-xl font-display font-black tracking-tighter text-primary-600 dark:text-primary-500">
-          ME.
+          ELKENANY
         </Link>
 
         {/* Desktop Navigation */}

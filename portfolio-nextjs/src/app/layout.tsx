@@ -4,9 +4,9 @@ import '@/lib/fontawesome';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mohamed-elkenany.vercel.app'),
-  title: 'Mohamed Elkenany - Full Stack Developer',
-  description: 'Professional portfolio of Mohamed Elkenany, Full Stack Developer specializing in Next.js, Node.js, and modern web technologies.',
-  keywords: ['portfolio', 'developer', 'nextjs', 'typescript', 'fullstack'],
+  title: 'Mohamed Elkenany | Information Systems Student',
+  description: 'Portfolio of Mohamed Elkenany, 3rd Year Information Systems Student at October 6 University, specializing in Backend systems (PHP/Laravel).',
+  keywords: ['portfolio', 'student', 'laravel', 'backend', 'php'],
   icons: {
     icon: '/vue-logo.png',
     shortcut: '/vue-logo.png',
