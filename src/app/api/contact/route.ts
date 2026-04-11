@@ -10,13 +10,14 @@ const contactSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  // console.log('📧 Contact API called');
+  console.log('📧 Contact API called');
   
   try {
     const body = await request.json();
-    // console.log('📝 Request body:', body);
+    console.log('📝 Request body:', body);
     
     const validatedData = contactSchema.parse(body);
+    console.log('✅ Data validated successfully');
     const subject = validatedData.subject || 'General Inquiry';
     
     const emailResult = await sendEmail({
@@ -34,7 +35,7 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    // console.log('📧 Email result:', emailResult);
+    console.log('📧 Email result:', emailResult);
 
     return NextResponse.json(
       { 
@@ -45,7 +46,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    // console.error('❌ Contact form error:', error);
+    console.error('❌ Contact form error:', error);
     
     if (error instanceof z.ZodError) {
       const errorMessages = error.errors.map(err => `${err.path.join('.')}: ${err.message}`).join(', ');
