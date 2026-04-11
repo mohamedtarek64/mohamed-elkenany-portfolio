@@ -5,7 +5,7 @@ import { sendEmail } from '@/lib/email';
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
-  subject: z.string().min(5, 'Subject must be at least 5 characters'),
+  subject: z.string().min(3, 'Subject must be at least 3 characters').optional().or(z.literal('')),
   message: z.string().min(10, 'Message must be at least 10 characters'),
 });
 
@@ -17,11 +17,11 @@ export async function POST(request: NextRequest) {
     // console.log('📝 Request body:', body);
     
     const validatedData = contactSchema.parse(body);
-    // console.log('✅ Data validated successfully');
-
+    const subject = validatedData.subject || 'General Inquiry';
+    
     const emailResult = await sendEmail({
-      to: process.env.CONTACT_EMAIL || 'mohamed20220632@gmail.com',
-      subject: `Portfolio Contact: ${validatedData.subject}`,
+      to: process.env.CONTACT_EMAIL || 'mohamedelkenany001@gmail.com',
+      subject: `Portfolio Contact: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${validatedData.name}</p>

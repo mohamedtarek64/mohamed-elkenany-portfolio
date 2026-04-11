@@ -142,6 +142,19 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div className="space-y-3">
+                  <label className="text-[10px] uppercase tracking-widest font-black text-dark-400 ml-2">Subject</label>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Project Inquiry / Job Opportunity"
+                    className="w-full px-6 py-4 rounded-2xl bg-dark-50 dark:bg-dark-900 border-none focus:ring-2 focus:ring-primary-500/20 text-dark-900 dark:text-white transition-all outline-none"
+                  />
+                </div>
+
+                <div className="space-y-3">
                   <label className="text-[10px] uppercase tracking-widest font-black text-dark-400 ml-2">Message</label>
                   <textarea
                     name="message"
