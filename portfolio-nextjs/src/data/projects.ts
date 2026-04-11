@@ -1,7 +1,7 @@
 import { Project } from '@/types/project';
 
 export const projects: Project[] = [
-  // 1. CloudServe Pro - Next-Gen Cloud Kitchen POS (from CV)
+  // 1. CloudServe Pro - Next-Gen Cloud Kitchen POS
   {
     id: 'cloud-serve-pos',
     title: 'CloudServe Pro',
@@ -25,7 +25,7 @@ export const projects: Project[] = [
       ]
     }
   },
-  // 2. Interior Designer 3D (from CV)
+  // 2. Interior Designer 3D
   {
     id: 'interior-designer-3d',
     title: 'Interior Designer 3D',
@@ -49,7 +49,7 @@ export const projects: Project[] = [
       ]
     }
   },
-  // 3. EduCloud LMS (from CV)
+  // 3. EduCloud LMS
   {
     id: 'elearning-platform',
     title: 'EduCloud LMS',
@@ -73,12 +73,84 @@ export const projects: Project[] = [
       ]
     }
   },
-  // 4. WhatsApp Clone (from CV)
+  // 4. Elite POS System
+  {
+    id: 'elite-pos-system',
+    title: 'Elite POS System',
+    description: 'Advanced Point of Sale System with Multi-branch Support',
+    longDescription: 'A comprehensive POS solution for retail and restaurants, featuring offline synchronization, inventory management, and detailed financial reporting.',
+    image: '/images/projects/POS.PNG',
+    technologies: ['Laravel', 'Vue.js', 'MySQL', 'Tailwind CSS', 'PWA'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/mohamedtarek64/POS-System',
+    featured: true,
+    category: 'web',
+    startDate: '2024-05-01',
+    endDate: '2024-08-01',
+    metrics: {
+      highlight: '99.9% Data Consistency',
+      items: [
+        'Offline mode with background synchronization',
+        'Barcode scanning and label printing',
+        'Multi-user role and permission system',
+        'Generated over 10,000 invoices in testing'
+      ]
+    }
+  },
+  // 5. Prestige Real Estate
+  {
+    id: 'prestige-real-estate',
+    title: 'Prestige Real Estate',
+    description: 'Premium Property Listing and Management Platform',
+    longDescription: 'A sophisticated real estate platform for managing property listings, agents, and client inquiries. Includes an interactive property map and advanced filtering.',
+    image: '/images/projects/Real Estate.PNG',
+    technologies: ['Laravel', 'Vue.js', 'Leaflet.js', 'MySQL', 'Tailwind CSS'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/mohamedtarek64/Real-Estate-Platform',
+    featured: true,
+    category: 'web',
+    startDate: '2024-03-01',
+    endDate: '2024-06-01',
+    metrics: {
+      highlight: 'Interactive Maps',
+      items: [
+        'Interactive map view using Leaflet.js',
+        'Advanced search using 15+ filter parameters',
+        'Automated lead notification for agents',
+        'Optimized image loading for high-res property photos'
+      ]
+    }
+  },
+  // 6. Holistic HMS
+  {
+    id: 'holistic-hms',
+    title: 'Holistic HMS',
+    description: 'Comprehensive Healthcare Management System',
+    longDescription: 'An enterprise-grade hospital management system covering patient records, appointment scheduling, billing, and pharmacy inventory.',
+    image: '/images/projects/hms.png',
+    technologies: ['PHP', 'Laravel', 'Livewire', 'MySQL', 'FullCalendar'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/mohamedtarek64/HMS',
+    featured: true,
+    category: 'web',
+    startDate: '2023-11-01',
+    endDate: '2024-02-01',
+    metrics: {
+      highlight: 'Patient Records Security',
+      items: [
+        'Secure patient record management (HIPAA-inspired)',
+        'Real-time appointment scheduling with conflicts detection',
+        'Complex medical billing and insurance processing',
+        'Pharmacy inventory with low-stock alerts'
+      ]
+    }
+  },
+  // 7. WhatsApp Clone
   {
     id: 'whatsapp-clone',
     title: 'WhatsApp Clone',
     description: 'Real-time messaging application with end-to-end feel',
-    longDescription: 'A real-time messaging clone with support for private chats, groups, and status updates. Built using a modern full-stack approach with focus on sub-100ms real-time delivery and responsive UI.',
+    longDescription: 'A real-time messaging clone with support for private chats, groups, and status updates. Built using a modern full-stack approach.',
     image: '/images/projects/whatsapp.png',
     technologies: ['Laravel', 'Vue.js', 'TypeScript', 'Pusher', 'Tailwind CSS'],
     liveUrl: '#',
@@ -97,14 +169,38 @@ export const projects: Project[] = [
       ]
     }
   },
-  // 5. SwiftFlow Courier (from CV)
+  // 8. SwiftBuy E-commerce
+  {
+    id: 'swiftbuy-ecommerce',
+    title: 'SwiftBuy E-commerce',
+    description: 'Modern Multi-vendor E-commerce Marketplace',
+    longDescription: 'A complete e-commerce solution with product management, shopping cart, multi-vendor support, and integrated payment gateways.',
+    image: '/images/projects/ecommerce.png',
+    technologies: ['Laravel', 'Vue.js', 'Stripe', 'Redis', 'Tailwind CSS'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/mohamedtarek64/Ecommerce-Platform',
+    featured: true,
+    category: 'web',
+    startDate: '2024-01-01',
+    endDate: '2024-04-01',
+    metrics: {
+      highlight: 'High Performance',
+      items: [
+        'Redis-powered cart and session management',
+        'Optimized product search across 1000+ items',
+        'Multi-vendor dashboard and commission tracking',
+        'Integrated multi-currency checkout system'
+      ]
+    }
+  },
+  // 9. SwiftFlow Courier
   {
     id: 'swiftflow-courier',
     title: 'SwiftFlow Courier',
     description: 'Enterprise-grade Courier & Logistics Management System',
-    longDescription: 'A comprehensive logistics platform with real-time shipment tracking, barcode generation (CODE-128), digital signatures for proof of delivery, and automated corporate billing.',
+    longDescription: 'A comprehensive logistics platform with real-time shipment tracking, barcode generation, and digital signatures.',
     image: '/images/projects/courier.png',
-    technologies: ['Laravel 11', 'Livewire', 'Tailwind CSS', 'MySQL', 'Alpine.js', 'Chart.js'],
+    technologies: ['Laravel 11', 'Livewire', 'Tailwind CSS', 'MySQL', 'Alpine.js'],
     liveUrl: '#',
     githubUrl: 'https://github.com/mohamedtarek64/Courier-Management-System',
     featured: true,
@@ -121,12 +217,12 @@ export const projects: Project[] = [
       ]
     }
   },
-  // 6. FinanceFlow Dashboard (from CV)
+  // 10. FinanceFlow Dashboard
   {
     id: 'personal-finance-dashboard',
     title: 'FinanceFlow Dashboard',
     description: 'Smart financial tracking and budgeting application',
-    longDescription: 'A comprehensive personal finance management tool with expense tracking, budget planning, investment monitoring, and financial goal setting. Features data-driven insights and spending pattern analysis.',
+    longDescription: 'A comprehensive personal finance management tool with expense tracking, budget planning, and investment monitoring.',
     image: '/images/projects/finance.png',
     technologies: ['Vue.js', 'TypeScript', 'Chart.js', 'Laravel', 'MySQL'],
     liveUrl: '#',
@@ -145,6 +241,54 @@ export const projects: Project[] = [
       ]
     }
   },
+  // 11. UrbanMap Real Estate
+  {
+    id: 'urbanmap-real-estate',
+    title: 'UrbanMap Navigator',
+    description: 'Advanced Geospatial Real Estate Search Platform',
+    longDescription: 'A map-centric real estate application focused on proximity searches and location-based discovery.',
+    image: '/images/projects/Real Estaste Map.PNG',
+    technologies: ['Laravel', 'Vue.js', 'Google Maps API', 'Redis'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/mohamedtarek64/Real-Estate-Map',
+    featured: false,
+    category: 'web',
+    startDate: '2024-02-01',
+    endDate: '2024-05-01',
+    metrics: {
+      highlight: 'Geospatial Search',
+      items: [
+        'Proximity search and radius filtering',
+        'Map-based property discovery and clustering',
+        'Fast location indexing with Redis',
+        'Custom interactive map markers and info windows'
+      ]
+    }
+  },
+  // 12. Culinary Recipe Hub
+  {
+    id: 'recipe-hub',
+    title: 'Culinary Recipes',
+    description: 'Social Platform for Food Enthusiasts and Chefs',
+    longDescription: 'A collaborative recipe sharing platform with nutritional analysis and ingredient scaling.',
+    image: '/images/projects/recipe.png',
+    technologies: ['Laravel', 'Livewire', 'Tailwind CSS', 'Spoonacular API'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/mohamedtarek64/Recipe-Finder',
+    featured: false,
+    category: 'web',
+    startDate: '2023-10-01',
+    endDate: '2023-12-01',
+    metrics: {
+      highlight: 'Nutritional Insights',
+      items: [
+        'Automated nutritional fact calculation',
+        'Ingredient quantity scaling for different portions',
+        'User-generated recipe rating and review system',
+        'Optimized search by dietary restrictions'
+      ]
+    }
+  }
 ];
 
 export default projects;
