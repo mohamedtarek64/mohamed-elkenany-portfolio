@@ -49,13 +49,13 @@ export const projects: Project[] = [
       ]
     }
   },
-  // 3. EduCloud LMS
+  // 3. EduCloud LMS (Live System)
   {
     id: 'elearning-platform',
     title: 'EduCloud LMS',
-    description: 'Modern Video-based Learning Management System',
-    longDescription: 'A full-featured E-Learning platform supporting multi-role access (Admin, Instructor, Student), course curriculum builders, progress tracking, and certificate generation.',
-    image: '/images/projects/elearning.png',
+    description: 'Expert-led Video Learning & Course Management System',
+    longDescription: 'A comprehensive educational platform built with Laravel 12 and Filament 4. Features a multi-role architecture (Admin, Instructor, Student), advanced course builder, video progress tracking, and automated certification. Optimized for high-performance video delivery.',
+    image: '/images/projects/elearning-v2.png',
     technologies: ['Laravel 12', 'Filament 4', 'Livewire 3', 'Tailwind CSS', 'Stripe', 'FFmpeg'],
     liveUrl: '#',
     githubUrl: 'https://github.com/mohamedtarek64/E-Learning-platform',
@@ -64,12 +64,12 @@ export const projects: Project[] = [
     startDate: '2024-09-01',
     endDate: '2024-12-01',
     metrics: {
-      highlight: '45% faster load times',
+      highlight: 'Advanced Video Pipeline',
       items: [
-        'Multi-role access: Admin, Instructor, Student',
-        'Video processing pipeline with FFmpeg',
-        'Automated certificate generation',
-        'Stripe-powered subscription billing'
+        'Multi-step course creation wizard for instructors',
+        'Video processing pipeline with FFmpeg integration',
+        'Automated PDF certificate generation upon completion',
+        'Stripe-powered subscription and payout management'
       ]
     }
   },
