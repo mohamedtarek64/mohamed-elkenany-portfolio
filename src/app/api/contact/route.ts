@@ -37,11 +37,21 @@ export async function POST(request: NextRequest) {
 
     console.log('📧 Email result:', emailResult);
 
+    if (!emailResult.success) {
+      return NextResponse.json(
+        { 
+          message: 'Failed to send email',
+          error: emailResult.error,
+          success: false 
+        },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json(
       { 
         message: 'Email sent successfully',
         success: true,
-        emailResult 
       },
       { status: 200 }
     );

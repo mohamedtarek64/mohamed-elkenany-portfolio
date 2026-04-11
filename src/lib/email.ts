@@ -14,10 +14,11 @@ export async function sendEmail({ to, subject, html }: EmailOptions) {
   
   // Check if email is configured
   if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.log('❌ Email not configured, simulating email send...');
-    // Simulate email sending for development
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    return { success: true, simulated: true };
+    console.error('❌ Email Configuration Missing: SMTP_HOST, SMTP_USER, or SMTP_PASS is not set.');
+    return { 
+      success: false, 
+      error: 'Server email configuration is missing. Please check environment variables.' 
+    };
   }
 
   console.log('✅ Email configuration found, attempting to send...');
