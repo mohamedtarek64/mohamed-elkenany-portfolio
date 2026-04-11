@@ -1,4 +1,35 @@
-export const personalInfo = {
+export interface PersonalStats {
+  experience: string;
+  projects: string;
+  graduation: string;
+}
+
+export interface PersonalInfo {
+  name: string;
+  title: string;
+  roles: string[];
+  description: string;
+  email: string;
+  phone: string;
+  location: string;
+  website: string;
+  github: string;
+  linkedin: string;
+  cvUrl: string;
+  resumeUrl: string;
+  profileImage: string;
+  heroImage: string;
+  stats: PersonalStats;
+  metrics: {
+    transactions: string;
+    optimization: string;
+    responseTime: string;
+    uptime: string;
+    fps: string;
+  };
+}
+
+export const personalInfo: PersonalInfo = {
   name: 'Mohamed Elkenany',
   title: 'Aspiring Full-Stack Developer',
   roles: [
@@ -23,7 +54,6 @@ export const personalInfo = {
     projects: '6 Systems',
     graduation: 'June 2026'
   },
-  // Honest metrics from CV
   metrics: {
     transactions: '300+',
     optimization: '85%',
