@@ -20,14 +20,7 @@ const MeshBackground: React.FC = () => {
 
     return (
         <div className="fixed inset-0 -z-20 overflow-hidden pointer-events-none bg-dark-950">
-            {/* Main GIF Background Layer */}
-            <div className="absolute inset-0 opacity-30 mix-blend-screen overflow-hidden">
-                <img
-                    src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJqZzZqZzZqZzZqZzZqZzZqZzZqZzZqZzZqZzZqZzZqZzZqZnp&ep=v1_gifs_search&rid=giphy.gif&ct=g"
-                    alt="Background Motion"
-                    className="w-full h-full object-cover scale-110 blur-[3px]"
-                />
-            </div>
+            {/* Deep Integration Overlays - GIF background layer removed due to 403 forbidden / poor LCP */}
 
             {/* Deep Integration Overlays */}
             <div className="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-950/60 to-dark-950 opacity-95" />
